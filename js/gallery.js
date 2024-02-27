@@ -86,8 +86,25 @@ const images = [
   }
   
   galleryContainer.addEventListener('click', (event) => {
+    event.preventDefault();
+    
     if (event.target === event.currentTarget){
       return;
     }
+
+    console.log(event);
+
     const card = event.target.closest('.gallery-item');
+    console.log(card)
+
+    const dataSource = event.target.getAttribute ("data-source") ;
+    const description = event.target.getAttribute('alt');
+
+    basicLightbox.create(
+        `‹div class="modal"›
+        <img src="${dataSource} "
+        alt="${description}"
+        width="1280" height="900"/>
+        </div>`
+        ). show ();
 })
